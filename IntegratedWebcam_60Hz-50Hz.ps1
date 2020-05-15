@@ -1,8 +1,7 @@
-﻿# This script will change the camera frequency from 60Hz (110v - American) to 50Hz (220v - Rest of World)
+﻿# This script will change the Integrated Webcam frequency from 60Hz (110v - American) to 50Hz (220v - Rest of World)
 
-$integratedWebcam = (Get-CimInstance Win32_PnPEntity | where caption -Match 'integrated webcam').pnpDeviceID
-$registryPath = "HKLM:\SYSTEM\CurrentControlSet\Enum"
-$WebcamPath = "$registryPath\$integratedWebcam\Device Parameters"
+$integratedWebcam = (Get-CimInstance Win32_PnPEntity | where caption -Match 'Integrated Webcam').pnpDeviceID
+$WebcamPath = "HKLM:\SYSTEM\CurrentControlSet\Enum\$integratedWebcam\Device Parameters"
 $Name = "PowerlineFrequency"
 $Value = 1 # 1 for 50Hz , 2 for 60Hz
 
